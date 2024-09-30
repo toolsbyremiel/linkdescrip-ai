@@ -13,11 +13,11 @@ import { Dock, DockIcon } from "@/components/ui/dock";
 import { Icons } from "@/components/ui/icons";
 import GradualSpacing from '@/components/ui/gradual-spacing';
 
-const API_URL = 'https://api-inference.huggingface.co/models/EleutherAI/gpt-neo-2.7B';
+const API_URL = 'https://api-inference.huggingface.co/models/distilgpt2';
 const API_TOKEN = process.env.NEXT_PUBLIC_HUGAPI;
 
 const generateHeadline = async (bio: string): Promise<string> => {
-  const prompt = `Based on this bio: "${bio}", generate a catchy and professional LinkedIn headline in under 7 to 9 words and i only want the headline to be generated not anything else just give me the headline only `;
+  const prompt = `Based on this bio: "${bio}", generate a catchy and professional LinkedIn headline in under 7 to 9 words.`;
 
   const response = await fetch(API_URL, {
     method: 'POST',
@@ -25,7 +25,10 @@ const generateHeadline = async (bio: string): Promise<string> => {
       'Authorization': `Bearer ${API_TOKEN}`,
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ inputs: prompt, parameters: { max_length: 30, temperature: 0.7 } })
+    body: JSON.stringify({
+      inputs: prompt,
+      parameters: { max_length: 20, temperature: 0.7 }
+    })
   });
 
   if (!response.ok) {
@@ -34,10 +37,12 @@ const generateHeadline = async (bio: string): Promise<string> => {
   }
 
   const result = await response.json();
-  console.log(result);
+  console.log('Full response:', result);  // Log the entire response for debugging
 
   if (Array.isArray(result) && result[0]?.generated_text) {
     return result[0].generated_text.trim();
+  } else if (result?.generated_text) {
+    return result.generated_text.trim();
   }
 
   return 'No headline generated. Please try again.';
