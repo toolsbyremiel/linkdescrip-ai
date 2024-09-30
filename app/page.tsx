@@ -13,11 +13,9 @@ import { Dock, DockIcon } from "@/components/ui/dock";
 import { Icons } from "@/components/ui/icons";
 import GradualSpacing from '@/components/ui/gradual-spacing';
 
-// Hugging Face API URL and token (for GPT-Neo model)
 const API_URL = 'https://api-inference.huggingface.co/models/EleutherAI/gpt-neo-2.7B';
-const API_TOKEN = process.env.NEXT_PUBLIC_HUGAPI; // Ensure this is set in your .env.local file
+const API_TOKEN = process.env.NEXT_PUBLIC_HUGAPI;
 
-// Function to call Hugging Face API for headline generation
 const generateHeadline = async (bio: string): Promise<string> => {
   const prompt = `Based on this bio: "${bio}", generate a catchy and professional LinkedIn headline in under 7 to 9 words and i only want the headline to be generated not anything else just give me the headline only `;
 
@@ -27,19 +25,17 @@ const generateHeadline = async (bio: string): Promise<string> => {
       'Authorization': `Bearer ${API_TOKEN}`,
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ inputs: prompt, parameters: { max_length: 30, temperature: 0.7 } }) // Adjusting parameters
+    body: JSON.stringify({ inputs: prompt, parameters: { max_length: 30, temperature: 0.7 } })
   });
 
   if (!response.ok) {
     const errorDetails = await response.text();
-    const error = new Error(`Failed to fetch headline. Status: ${response.status}. Details: ${errorDetails}`);
-    throw error;
+    throw new Error(`Failed to fetch headline. Status: ${response.status}. Details: ${errorDetails}`);
   }
 
   const result = await response.json();
-  console.log(result); // Log the full response to check its structure
+  console.log(result);
 
-  // Check if the model returns the generated text
   if (Array.isArray(result) && result[0]?.generated_text) {
     return result[0].generated_text.trim();
   }
@@ -66,7 +62,7 @@ export default function HeadlineGenerator() {
       setHeadline(generatedHeadline);
     } catch (err) {
       console.error(err);
-      setError(err.message);
+      setError(err instanceof Error ? err.message : 'An unknown error occurred');
     } finally {
       setIsLoading(false);
     }
@@ -80,7 +76,6 @@ export default function HeadlineGenerator() {
         )}
       />
 
-      {/* Main Card content */}
       <Card className="w-full max-w-2xl mx-auto relative">
         <BorderBeam size={500} duration={12} delay={12} />
         <CardHeader>
