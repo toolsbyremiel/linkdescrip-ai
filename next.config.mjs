@@ -1,4 +1,4 @@
-export default {
-  assetPrefix: '/linkdescriptai/',
-  basePath: '/linkdescriptai',
-};
+/** @type {import('next').NextConfig} */
+const nextConfig = {};
+
+export default nextConfig;
