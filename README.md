@@ -1,4 +1,4 @@
-<h1 align="center"><h1>LinkDescrip AI</h1>
+<center><h1>LinkDescrip AI</h1></center>
 <img src="https://github.com/user-attachments/assets/4d4ec02c-5cb5-4739-bf7c-93ef2ccd4504" alt="project-screenshot" >
 <br></br>
 LinkDescrip AI is a web application that helps users generate optimized LinkedIn headlines based on their professional bios. By utilizing the power of natural language processing models, this tool provides catchy and professional headlines to enhance users' LinkedIn profiles.
