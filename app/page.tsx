@@ -124,7 +124,7 @@ export default function HeadlineGenerator() {
       </Card>
       <Dock direction="bottom">
         <DockIcon>
-          <a href="https://remiel.fyi" target='_blank' rel="noopener" title="Google"><Icons.logo className="size-6" /></a>
+          <a href="https://remiel.fyi" target='_blank' rel="noopener" title="Google"><Icons.spinner className="size-6" /></a>
         </DockIcon>
         <DockIcon>
           <a href="https://github.com/jaswanthremiel" target='_blank' rel="noopener" title="Google"><Icons.gitHub className="size-6" /></a>
