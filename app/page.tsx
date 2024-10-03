@@ -124,16 +124,16 @@ export default function HeadlineGenerator() {
       </Card>
       <Dock direction="bottom">
         <DockIcon>
-          <a href="https://remiel.fyi" target='_blank' rel="noopener" title="Google"><Icons.spinner className="size-6" /></a>
+          <a href="https://twitter.com/jrxag_official" target='_blank' rel="noopener" title="Google"><Icons.twitter className="size-6" /></a>
         </DockIcon>
         <DockIcon>
           <a href="https://github.com/jaswanthremiel" target='_blank' rel="noopener" title="Google"><Icons.gitHub className="size-6" /></a>
         </DockIcon>
         <DockIcon>
-          <a href="https://remiel.fyi" target='_blank' rel="noopener" title="Google"><Icons.google className="size-6" /></a>
+          <a href="mailto:support@tools.remiel.fyi?subject=Support for LinkDescrip-AI" target='_blank' rel="noopener" title="Google"><Icons.google className="size-6" /></a>
         </DockIcon>
         <DockIcon>
-          <a href="https://remiel.fyi" target='_blank' rel="noopener" title="Google"><Icons.spinner className="size-6" /></a>
+          <a href="https://remiel.fyi" target='_blank' rel="noopener" title="Google"><Icons.apple className="size-6" /></a>
         </DockIcon>
       </Dock>
     </div>
