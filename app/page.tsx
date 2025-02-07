@@ -20,8 +20,7 @@ import { Icons } from "@/components/ui/icons";
 import GradualSpacing from "@/components/ui/gradual-spacing";
 
 const API_URL = "https://openrouter.ai/api/v1/chat/completions";
-const API_TOKEN =
-  "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";
+const API_TOKEN = process.env.NEXT_PUBLIC_OPENROUTER_API;
 
 const generateResponse = async (prompt: string): Promise<string> => {
   const formattedPrompt = `Generate a professional LinkedIn headline in 6-7 words based on the following input: "${prompt}" and just only give the headline no other extra stuffs, if more options of headline are there give them one by one`;
