@@ -15,8 +15,6 @@ import { Loader2, AlertCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { BorderBeam } from "@/components/ui/border-beam";
 import { DotPattern } from "@/components/ui/dot-pattern";
-import { Dock, DockIcon } from "@/components/ui/dock";
-import { Icons } from "@/components/ui/icons";
 import GradualSpacing from "@/components/ui/gradual-spacing";
 
 const API_URL = "https://openrouter.ai/api/v1/chat/completions";
@@ -32,7 +30,7 @@ const generateResponse = async (prompt: string): Promise<string> => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      model: "google/gemini-2.0-pro-exp-02-05:free",
+      model: "google/gemini-2.0-flash-lite-preview-02-05:free",
       messages: [{ role: "user", content: formattedPrompt }],
     }),
   });
